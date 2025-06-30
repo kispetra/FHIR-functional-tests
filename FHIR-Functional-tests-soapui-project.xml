@@ -1,0 +1,1592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="43ff543d-b62e-44b7-8466-d6060c50cd23" activeEnvironment="Default" name="FHIR Functional tests" resourceRoot="" soapui-version="5.8.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:testSuite id="9017fc06-890c-4f30-8feb-c24c4016c810" name="Patient"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="ede42b0b-2b5b-42dd-a55c-661b67818fd9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="23f3f94c-7645-48ea-bca4-1611ab916246"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="0c3dabd3-fd7d-4ea4-ba15-990316ea6f74"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>patient_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ef99bcef-1475-44c4-85d2-775f69f08579" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - GET" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="6fa36e8b-b383-42fc-a77c-982f83ac09d6"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/${#TestSuite#patient_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f4d7965c-9928-488c-a892-74134b8ed20a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - PUT" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="7d77773f-6d18-45f9-a1eb-00dd36ff136f"><con:settings/><con:config method="PUT" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/${#TestSuite#patient_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "2",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2025-06-26T20:09:54.180+02:00"
+  },
+  "name": [
+    {
+      "use": "official",
+      "family": "Ki�",
+      "given": [
+        "Petra - PUT"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12"
+}</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="94f60c19-b070-4bca-8961-a5a20241ff32" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="34a9bf46-9e24-45b5-872b-d7df8960a116"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/${#TestSuite#patient_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="a85bd703-ba6b-4698-9117-2c02dc617a9f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - $validate" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="f66ece02-11d3-463e-a765-f25c5e77ec03"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/$validate</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "text": {
+    "status": "generated",
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Pacijent: Petra Kiš, rođena 2002-11-12, mobitel: +385958332873&lt;/div>"
+  },
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>patient_id</con:name><con:value>2</con:value></con:property></con:properties></con:testSuite><con:testSuite id="297c7fc9-8a74-4e2f-af64-d5693dd06817" name="Practitioner"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="9e414220-e629-4f39-9fd3-de5f0c7ae4f6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="853dc4c7-4623-48fa-ad6e-13a907beb5e2"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/</con:endpoint><con:request>{
+  "resourceType": "Practitioner",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/practitioners",
+	  "value": "anna-001"
+	}
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Szendrei",
+      "given": ["Anna"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-04-06"
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="21cf593d-9380-4b7d-9f50-63e32fd3f9f5"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>practitioner_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ab20d0a7-311e-4f8d-b6a8-bc1c9544c1ff" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - GET" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="46254c0e-be47-40f2-bfd7-80bfed64dcb6"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/${#TestSuite#practitioner_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="59f10403-35b5-41fe-ac79-01985e3301bd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - PUT" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="32d9d88a-e2a7-4820-82a3-26672d3614ac"><con:settings/><con:config method="PUT" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/${#TestSuite#practitioner_id}</con:endpoint><con:request>{
+        "resourceType": "Practitioner",
+        "id": "${#TestSuite#practitioner_id}",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2025-06-27T15:54:59.342+02:00"
+        },
+        "identifier": [
+          {
+            "system": "http://moj-sustav.hr/practitioners",
+            "value": "anna-001"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "family": "Szendrei",
+            "given": [
+              "Anna - PUT"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2000-04-06"
+      }</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="632bf9e4-dbea-43b6-8f32-db7e7361e6f5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="fd927832-5a06-45bb-ba17-bb2fed58383d"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/${#TestSuite#practitioner_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4651f25c-d164-48f2-a55f-2b5f125cf90c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - $validate" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="a70bda7c-805d-4d8f-9f62-dbd14613a3ad"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/$validate</con:endpoint><con:request>{
+  "resourceType": "Practitioner",
+  "text": {
+    "status": "generated",
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Anna Szendrei, female, born 2000-04-06&lt;/div>"
+  },
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/practitioners",
+	  "value": "anna-001"
+	}
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Szendrei",
+      "given": ["Anna"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-04-06"
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>patient_id</con:name><con:value>2</con:value></con:property><con:property><con:name>practitioner_id</con:name><con:value>10</con:value></con:property></con:properties></con:testSuite><con:testSuite id="ad0d8ba2-6060-4670-9cee-56faf53f8de9" name="Organization"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="bc69769c-8a6f-4b91-9cc5-20355b7ea677" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="7e5ee499-6a56-422b-a0fe-0bc1000ab7e6"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/</con:endpoint><con:request>{
+  "resourceType": "Organization",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/Organization",
+	  "value": "kbc-osijek"
+	}
+  ],
+  "active": true,
+  "name": "Klinički Bolnički Centar Osijek",
+  "alias": ["KBC Osijek"],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385-31-511-511",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "info@kbc-osijek.hr",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "type": "physical",
+      "text": "J. Huttlera 4, 31000 Osijek, Hrvatska",
+      "line": ["J. Huttlera 4"],
+      "city": "Osijek",
+      "postalCode": "31000",
+      "country": "HR"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="10bdb91a-aaa1-4773-9b78-917c1d516abd"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>organization_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d5ced32e-74fe-4fd1-bb11-534b5b0f5dbd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - GET" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="13943f1b-db86-4a39-a80e-a4addbea5727"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/${#TestSuite#organization_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="87f6c5e4-b7ba-4848-90b3-9d9331eae07b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - PUT" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="4efb48cd-6bed-41fd-bfb8-a791665b6413"><con:settings/><con:config method="PUT" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/${#TestSuite#organization_id}</con:endpoint><con:request>{
+  "resourceType": "Organization",
+  "id": "${#TestSuite#organization_id}",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/Organization",
+	  "value": "kbc-osijek"
+	}
+  ],
+  "active": true,
+  "name": "Klinički Bolnički Centar Osijek - PUT",
+  "alias": ["KBC Osijek"],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385-31-511-511",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "info@kbc-osijek.hr",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "type": "physical",
+      "text": "J. Huttlera 4, 31000 Osijek, Hrvatska",
+      "line": ["J. Huttlera 4"],
+      "city": "Osijek",
+      "postalCode": "31000",
+      "country": "HR"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="1b08f9ea-613f-4ae8-a139-ad241849a250" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="4d61ebe1-1b3f-473b-926b-407a17babb0f"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/${#TestSuite#organization_id}</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d2216e97-6322-4987-af82-a2611581aaa4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - $validate" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="6522cbbf-24a8-4aa6-b62b-66b78c7a3b7b"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/$validate</con:endpoint><con:request>{
+  "resourceType": "Organization",
+  "text": {
+    "status": "generated",
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Klinicki Bolnicki Centar Osijek&lt;/div>"
+  },
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/Organization",
+	  "value": "kbc-osijek"
+	}
+  ],
+  "active": true,
+  "name": "Klinički Bolnički Centar Osijek",
+  "alias": ["KBC Osijek"],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385-31-511-511",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "info@kbc-osijek.hr",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "type": "physical",
+      "text": "J. Huttlera 4, 31000 Osijek, Hrvatska",
+      "line": ["J. Huttlera 4"],
+      "city": "Osijek",
+      "postalCode": "31000",
+      "country": "HR"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>patient_id</con:name><con:value>2</con:value></con:property><con:property><con:name>practitioner_id</con:name><con:value>10</con:value></con:property><con:property><con:name>organization_id</con:name><con:value>16</con:value></con:property></con:properties></con:testSuite><con:testSuite id="5da6cecc-a8e6-4f27-9e61-ef003b521220" name="Encounter"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="5a2c0769-d513-4a32-94dc-427710da8c2d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="895cc3d9-1a42-4473-95eb-9f6d779f24ce"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="e7004cbf-45fd-4786-91d6-3abbbcb5b75e"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>patient_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>patient_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>patient_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>patient_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f91c4d18-fa66-4291-b1b3-b065b39228bb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="faad9921-5f66-43ad-b4ee-b110fa9e950f"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/</con:endpoint><con:request>{
+  "resourceType": "Practitioner",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/practitioners",
+	  "value": "anna-001"
+	}
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Szendrei",
+      "given": ["Anna"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-04-06"
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="ba0edaf8-c006-47c5-9824-aecdbc4c15e4"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>practitioner_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>practitioner_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>practitioner_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>practitioner_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="0528838e-a58a-4609-b6a2-f2b0811fd406" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="c76fa1e7-6156-4d56-ad40-085996502247"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/</con:endpoint><con:request>{
+  "resourceType": "Organization",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/Organization",
+	  "value": "kbc-osijek"
+	}
+  ],
+  "active": true,
+  "name": "Klinički Bolnički Centar Osijek",
+  "alias": ["KBC Osijek"],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385-31-511-511",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "info@kbc-osijek.hr",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "type": "physical",
+      "text": "J. Huttlera 4, 31000 Osijek, Hrvatska",
+      "line": ["J. Huttlera 4"],
+      "city": "Osijek",
+      "postalCode": "31000",
+      "country": "HR"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="6f03d3a8-c353-4040-b4d5-9dfbb6aeb3bf"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>organization_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_name</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name</con:sourcePath><con:targetType>organization_name</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="036b07d0-a513-43df-8b40-d30ae912cc75" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Encounter - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="c89624b6-75b8-4d57-949c-5dd627e0231b"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Encounter/</con:endpoint><con:request>{
+  "resourceType": "Encounter",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "Ambulatory"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "participant": [
+    {
+      "individual": {
+        "reference": "Practitioner/${#TestSuite#practitioner_id}",
+        "display": "Anna Szendrei"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-06-20T10:00:00+01:00",
+    "end": "2024-06-20T10:30:00+01:00"
+  },
+  "serviceProvider": {
+    "reference": "Organization/${#TestSuite#organization_id}",
+    "display": "KBC Osijek"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="32851b6d-a773-4bc4-89e1-ba29d7a13097"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>encounter_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>encounter_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="1bc43689-9ba8-46b8-accc-3e723ba5cc82" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Encounter - GET" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="5af9570e-17d1-42db-b8d6-ae709de1ac25"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Encounter/${#TestSuite#encounter_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="63b9c0e3-13cd-4ef6-8968-4148bf5cfacf" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Encounter - PUT" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="699f3cce-fde8-4300-903a-941a64256a29"><con:settings/><con:config method="PUT" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Encounter/${#TestSuite#encounter_id}</con:endpoint><con:request>{
+  "resourceType": "Encounter",
+  "id": "${#TestSuite#encounter_id}",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "Ambulatory"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "participant": [
+    {
+      "individual": {
+        "reference": "Practitioner/${#TestSuite#practitioner_id}",
+        "display": "Anna Szendrei"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-06-20T10:00:00+01:00",
+    "end": "2024-06-20T10:45:00+01:00"
+  },
+  "serviceProvider": {
+    "reference": "Organization/${#TestSuite#organization_id}",
+    "display": "KBC Osijek"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b1cdc8c0-1370-4bf0-a762-f09237233530" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Encounter - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="4ff65f24-702b-4398-aa26-8176b4843ddd"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Encounter/${#TestSuite#encounter_id}</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="2e8e9411-e0df-4476-a2e9-d10aed9e16fd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Encounter - $validate" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="f85a0eef-b39c-4dfd-a174-0fd254df5464"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Encounter/$validate</con:endpoint><con:request>{
+  "resourceType": "Encounter",
+  "text": {
+	  "status": "generated",
+	  "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Susret pacijenta ${#TestSuite#patient_name_given} ${#TestSuite#patient_name_family} s liječnikom ${#TestSuite#practitioner_name_given}  ${#TestSuite#practitioner_name_family} u ${#TestSuite#organization_name}.&lt;/div>"
+  },
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "Ambulatory"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "participant": [
+    {
+      "individual": {
+        "reference": "Practitioner/${#TestSuite#practitioner_id}",
+        "display": "Anna Szendrei"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-06-20T10:00:00+01:00",
+    "end": "2024-06-20T10:30:00+01:00"
+  },
+  "serviceProvider": {
+    "reference": "Organization/${#TestSuite#organization_id}",
+    "display": "KBC Osijek"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>patient_id</con:name><con:value>33</con:value></con:property><con:property><con:name>practitioner_id</con:name><con:value>34</con:value></con:property><con:property><con:name>organization_id</con:name><con:value>35</con:value></con:property><con:property><con:name>encounter_id</con:name><con:value>36</con:value></con:property><con:property><con:name>patient_name_given</con:name><con:value>Petra</con:value></con:property><con:property><con:name>patient_name_family</con:name><con:value>Kiš</con:value></con:property><con:property><con:name>practitioner_name_given</con:name><con:value>Anna</con:value></con:property><con:property><con:name>practitioner_name_family</con:name><con:value>Szendrei</con:value></con:property><con:property><con:name>organization_name</con:name><con:value>Klinički Bolnički Centar Osijek</con:value></con:property></con:properties></con:testSuite><con:testSuite id="51fe7745-f657-4d1d-ad4a-20543f484398" name="Condition"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="834a66a0-e5be-454d-9055-608059f80763" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="06fc45ec-8ea5-49c6-92c8-cfb652c6324f"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="a4518016-4d6f-4377-a496-97f099a98ce1"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>patient_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>patient_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>patient_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>patient_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="bbced58a-ce1b-44f5-bb63-12654aa2f3cd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="b984e0c9-6094-48a3-9d26-d44367696c19"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/</con:endpoint><con:request>{
+  "resourceType": "Practitioner",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/practitioners",
+	  "value": "anna-001"
+	}
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Szendrei",
+      "given": ["Anna"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-04-06"
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="dbb00b24-1716-4e8b-9899-2970c6999ca1"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>practitioner_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>practitioner_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>practitioner_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>practitioner_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="a52270f5-6a14-46a3-9fcc-e51c7c474868" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="a8e3f95c-b0be-464e-910f-48d3a731e9ee"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/</con:endpoint><con:request>{
+  "resourceType": "Organization",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/Organization",
+	  "value": "kbc-osijek"
+	}
+  ],
+  "active": true,
+  "name": "Klinički Bolnički Centar Osijek",
+  "alias": ["KBC Osijek"],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385-31-511-511",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "info@kbc-osijek.hr",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "type": "physical",
+      "text": "J. Huttlera 4, 31000 Osijek, Hrvatska",
+      "line": ["J. Huttlera 4"],
+      "city": "Osijek",
+      "postalCode": "31000",
+      "country": "HR"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="af8469fd-97fb-4e38-891f-986fb401df4a"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>organization_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_name</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name</con:sourcePath><con:targetType>organization_name</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="18159b08-7a84-4057-8fd4-47f257eb8bc6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Encounter - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="be79636a-37ac-4287-9891-a42dcc6fff95"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Encounter/</con:endpoint><con:request>{
+  "resourceType": "Encounter",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "Ambulatory"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "participant": [
+    {
+      "individual": {
+        "reference": "Practitioner/${#TestSuite#practitioner_id}",
+        "display": "Anna Szendrei"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-06-20T10:00:00+01:00",
+    "end": "2024-06-20T10:30:00+01:00"
+  },
+  "serviceProvider": {
+    "reference": "Organization/${#TestSuite#organization_id}",
+    "display": "KBC Osijek"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="6be53b96-464f-41c8-aa6d-3e00c69a6e3c"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>encounter_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>encounter_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="7cc26cc1-4b82-4807-95ab-fb77f6a468a4" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Condition - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="943a6e2c-b7bd-4dab-a170-46badc8a65c3"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Condition/</con:endpoint><con:request>{
+  "resourceType": "Condition",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "38341003",
+        "display": "Hypertension"
+      }
+    ],
+    "text": "Hypertension"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "encounter": {
+    "reference": "Encounter/${#TestSuite#encounter_id}"
+  },
+  "recordedDate": "2024-06-23",
+  "recorder": {
+    "reference": "Practitioner/${#TestSuite#practitioner_id}"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="edcae41a-9fd7-49a5-b4b2-f00494534b59"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>condition_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>condition_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="bd9b29c7-18a7-4f3d-a8dd-4645ac85ea3f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Condition - GET" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="58e64509-8de8-4fd3-8154-407c29bc1504"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Condition/${#TestSuite#condition_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="2f4104c7-041e-4bc4-8ce7-a84b5c2f3896" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Condition - PUT" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="872570a2-c9c1-4814-a4fd-0cf0ea7d47c8"><con:settings/><con:config method="PUT" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Condition/${#TestSuite#condition_id}</con:endpoint><con:request>{
+  "resourceType": "Condition",
+  "id": "${#TestSuite#condition_id}",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "38341003",
+        "display": "Hypertension"
+      }
+    ],
+    "text": "Hypertension"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "encounter": {
+    "reference": "Encounter/${#TestSuite#encounter_id}"
+  },
+  "recordedDate": "2024-06-24",
+  "recorder": {
+    "reference": "Practitioner/${#TestSuite#practitioner_id}"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="dcdf2a4f-3947-4bbd-b97a-21d3b0c5c637" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Condition - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="5044b5b8-af08-418b-b3e4-e9ede9341dc8"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Condition/${#TestSuite#condition_id}</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="bf28ff85-bdc2-4972-b841-6c3a41e5cc8c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Condition - $validate" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="b4134854-4294-47dc-b668-792a21513d25"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Condition/$validate</con:endpoint><con:request>{
+  "resourceType": "Condition",
+  "text": {
+	 "status": "generated",
+	 "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Pacijent ${#TestSuite#patient_name_given} ${#TestSuite#patient_name_family} dijagnosticiran s određenim zdravstvenim stanjem od strane liječnika ${#TestSuite#practitioner_name_given} ${#TestSuite#practitioner_name_family} u ustanovi ${#TestSuite#organization_name}.&lt;/div>"
+  },
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active",
+        "display": "Active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed",
+        "display": "Confirmed"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "38341003",
+        "display": "Hypertension"
+      }
+    ],
+    "text": "Hypertension"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "encounter": {
+    "reference": "Encounter/${#TestSuite#encounter_id}"
+  },
+  "recordedDate": "2024-06-23",
+  "recorder": {
+    "reference": "Practitioner/${#TestSuite#practitioner_id}"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>patient_id</con:name><con:value>42</con:value></con:property><con:property><con:name>practitioner_id</con:name><con:value>43</con:value></con:property><con:property><con:name>organization_id</con:name><con:value>44</con:value></con:property><con:property><con:name>encounter_id</con:name><con:value>45</con:value></con:property><con:property><con:name>patient_name_given</con:name><con:value>Petra</con:value></con:property><con:property><con:name>patient_name_family</con:name><con:value>Kiš</con:value></con:property><con:property><con:name>practitioner_name_given</con:name><con:value>Anna</con:value></con:property><con:property><con:name>practitioner_name_family</con:name><con:value>Szendrei</con:value></con:property><con:property><con:name>organization_name</con:name><con:value>Klinički Bolnički Centar Osijek</con:value></con:property><con:property><con:name>condition_id</con:name><con:value>46</con:value></con:property></con:properties></con:testSuite><con:testSuite id="51ee3de8-04e5-412a-adf2-f1eb539ca52f" name="Observation"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b8ba76bf-98b9-4c30-ae53-5c526ee3a246" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="4ea25358-5551-447c-871c-e63d0a4d2063"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="a3a48e7f-a771-4457-9c3c-acbd5ee18f99"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>patient_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>patient_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>patient_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>patient_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4ed72545-5955-48f7-ac65-a08eb479af61" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="c342f702-e7db-4a7f-a9a4-b3695cc77368"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/</con:endpoint><con:request>{
+  "resourceType": "Practitioner",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/practitioners",
+	  "value": "anna-001"
+	}
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Szendrei",
+      "given": ["Anna"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-04-06"
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="26da6224-7270-45aa-9a23-2b951f983649"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>practitioner_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>practitioner_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>practitioner_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>practitioner_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="29477bc8-1983-4f05-a1cc-325099c2f141" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="a4582af1-1b32-4fa0-ac37-e37fde6c4d63"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/</con:endpoint><con:request>{
+  "resourceType": "Organization",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/Organization",
+	  "value": "kbc-osijek"
+	}
+  ],
+  "active": true,
+  "name": "Klinički Bolnički Centar Osijek",
+  "alias": ["KBC Osijek"],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385-31-511-511",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "info@kbc-osijek.hr",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "type": "physical",
+      "text": "J. Huttlera 4, 31000 Osijek, Hrvatska",
+      "line": ["J. Huttlera 4"],
+      "city": "Osijek",
+      "postalCode": "31000",
+      "country": "HR"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="06c75eec-aaa0-4e1a-ae6f-450c611f5bb9"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>organization_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_name</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name</con:sourcePath><con:targetType>organization_name</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="06447eca-9fa2-4986-b0a9-19d40bc45262" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Encounter - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="0d435ad8-b7da-4839-a9e4-0c9e822f7690"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Encounter/</con:endpoint><con:request>{
+  "resourceType": "Encounter",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "Ambulatory"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "participant": [
+    {
+      "individual": {
+        "reference": "Practitioner/${#TestSuite#practitioner_id}",
+        "display": "Anna Szendrei"
+      }
+    }
+  ],
+  "period": {
+    "start": "2024-06-20T10:00:00+01:00",
+    "end": "2024-06-20T10:30:00+01:00"
+  },
+  "serviceProvider": {
+    "reference": "Organization/${#TestSuite#organization_id}",
+    "display": "KBC Osijek"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="613d52cc-4a65-4f6b-a8ba-37624e9cd3da"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>encounter_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>encounter_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d5b5843f-aa42-4c5a-bc91-eb987712e3aa" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Observation - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="3aeb9ea1-ba63-4d96-b62d-f4b8b238b655"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Observation/</con:endpoint><con:request>{
+  "resourceType": "Observation",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8310-5",
+        "display": "Body temperature"
+      }
+    ],
+    "text": "Tjelesna temperatura"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "encounter": {
+    "reference": "Encounter/${#TestSuite#encounter_id}"
+  },
+  "effectiveDateTime": "2024-06-23T10:30:00+01:00",
+  "issued": "2024-06-23T10:35:00+01:00",
+  "performer": [
+    {
+      "reference": "Practitioner/${#TestSuite#practitioner_id}"
+    }
+  ],
+  "valueQuantity": {
+    "value": 37.2,
+    "unit": "°C",
+    "system": "http://unitsofmeasure.org",
+    "code": "Cel"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="516635e3-c501-46e9-8c10-196ca01d60d6"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>observation_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>observation_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f346fea9-f18f-4b6b-87ad-965e79670209" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Observation - GET" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="41f7bd48-543d-4590-acb3-ba07bf17b452"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Observation/${#TestSuite#observation_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="782a9208-bb5a-4155-be7c-ad5e20bfa529" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Observation - PUT" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="282e3220-a777-482c-8f94-05031e87c14e"><con:settings/><con:config method="PUT" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Observation/${#TestSuite#observation_id}</con:endpoint><con:request>{
+  "resourceType": "Observation",
+  "id": "${#TestSuite#observation_id}",
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8310-5",
+        "display": "Body temperature"
+      }
+    ],
+    "text": "Tjelesna temperatura"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "encounter": {
+    "reference": "Encounter/${#TestSuite#encounter_id}"
+  },
+  "effectiveDateTime": "2024-06-23T10:30:00+01:00",
+  "issued": "2024-06-23T10:35:00+01:00",
+  "performer": [
+    {
+      "reference": "Practitioner/${#TestSuite#practitioner_id}"
+    }
+  ],
+  "valueQuantity": {
+    "value": 37.8,
+    "unit": "°C",
+    "system": "http://unitsofmeasure.org",
+    "code": "Cel"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="7b8ba711-198f-428c-83a9-c0abc7f65f43" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Observation - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="dc9bdc88-d3a1-44a6-9058-b28f23717db4"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Observation/${#TestSuite#observation_id}</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6c475bc7-e016-49b8-b02a-2a3b92ef616e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Observation - $validate" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="31a2f1e0-4253-45a3-8263-001d0613683c"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Observation/$validate</con:endpoint><con:request>{
+  "resourceType": "Observation",
+  "text": {
+	 "status": "generated",
+	 "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Zabilježeno opažanje za pacijenta ${#TestSuite#patient_name_given} ${#TestSuite#patient_name_family}, koje je izvršio liječnik ${#TestSuite#practitioner_name_given} ${#TestSuite#practitioner_name_family} u ustanovi ${#TestSuite#organization_name}.&lt;/div>"
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "8310-5",
+        "display": "Body temperature"
+      }
+    ],
+    "text": "Tjelesna temperatura"
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "encounter": {
+    "reference": "Encounter/${#TestSuite#encounter_id}"
+  },
+  "effectiveDateTime": "2024-06-23T10:30:00+01:00",
+  "issued": "2024-06-23T10:35:00+01:00",
+  "performer": [
+    {
+      "reference": "Practitioner/${#TestSuite#practitioner_id}"
+    }
+  ],
+  "valueQuantity": {
+    "value": 37.8,
+    "unit": "°C",
+    "system": "http://unitsofmeasure.org",
+    "code": "Cel"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>patient_id</con:name><con:value>52</con:value></con:property><con:property><con:name>practitioner_id</con:name><con:value>53</con:value></con:property><con:property><con:name>organization_id</con:name><con:value>54</con:value></con:property><con:property><con:name>encounter_id</con:name><con:value>55</con:value></con:property><con:property><con:name>patient_name_given</con:name><con:value>Petra</con:value></con:property><con:property><con:name>patient_name_family</con:name><con:value>Kiš</con:value></con:property><con:property><con:name>practitioner_name_given</con:name><con:value>Anna</con:value></con:property><con:property><con:name>practitioner_name_family</con:name><con:value>Szendrei</con:value></con:property><con:property><con:name>organization_name</con:name><con:value>Klinički Bolnički Centar Osijek</con:value></con:property><con:property><con:name>condition_id</con:name><con:value>46</con:value></con:property><con:property><con:name>observation_id</con:name><con:value>56</con:value></con:property></con:properties></con:testSuite><con:testSuite id="0583fb6d-dc3b-4a5a-b080-812a9ff5993a" name="ServiceRequest"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="1e24b60e-38a2-4370-9cae-4c136ba1ef45" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="c0693b10-c114-462d-9b95-64748a3541bc"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="684e6575-9657-4e43-9442-61925fe8473f"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>patient_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>patient_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>patient_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>patient_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="cbd4b64f-75fe-4e48-ac0d-07e133cffa0a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="c9d8b8f2-1841-436f-a675-4afa7d02836a"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/</con:endpoint><con:request>{
+  "resourceType": "Practitioner",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/practitioners",
+	  "value": "anna-001"
+	}
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Szendrei",
+      "given": ["Anna"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-04-06"
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="1e3da167-1132-41e9-aefb-579e06ea715e"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>practitioner_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>practitioner_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>practitioner_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>practitioner_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ed4436c1-dcba-43f0-9cc9-6f8e9f59b790" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="6e42a885-e302-480d-8b0b-9167b691d743"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/</con:endpoint><con:request>{
+  "resourceType": "Organization",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/Organization",
+	  "value": "kbc-osijek"
+	}
+  ],
+  "active": true,
+  "name": "Klinički Bolnički Centar Osijek",
+  "alias": ["KBC Osijek"],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385-31-511-511",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "info@kbc-osijek.hr",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "type": "physical",
+      "text": "J. Huttlera 4, 31000 Osijek, Hrvatska",
+      "line": ["J. Huttlera 4"],
+      "city": "Osijek",
+      "postalCode": "31000",
+      "country": "HR"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="e610b406-e782-42bf-b8e7-3b44487d0c3c"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>organization_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_name</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name</con:sourcePath><con:targetType>organization_name</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="5a520800-ef38-4941-9288-14a79e1b8a53" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ServiceRequest - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="d334f4f0-60e5-4b6b-98cd-20ed1cf7c4bd"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/ServiceRequest/</con:endpoint><con:request>{
+  "resourceType": "ServiceRequest",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/servicerequest-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58410-2",
+        "display": "Complete blood count (hemogram) panel"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "requester": {
+    "reference": "Practitioner/${#TestSuite#practitioner_id}"
+  },
+  "performer": [
+    {
+      "reference": "Organization/${#TestSuite#organization_id}"
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Liječnik ${#TestSuite#practitioner_name_given} ${#TestSuite#practitioner_name_family} iz ustanove ${#TestSuite#organization_name} zatražio je laboratorijsku pretragu za pacijenta ${#TestSuite#patient_name_given} ${#TestSuite#patient_name_family}.&lt;/div>"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="8067a699-1f0f-49c1-821a-012775b963ef"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>serviceRequest_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>serviceRequest_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="fb675c00-28a9-471e-b6bb-4b0e48e51972" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ServiceRequest - GET" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="e69237d7-326a-417b-860e-c6fe0310b56a"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/ServiceRequest/${#TestSuite#serviceRequest_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="c715905b-59ae-4124-a352-bf446625b351" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ServiceRequest - PUT" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="6bcf14f9-524e-4830-9a2f-95bd492288a7"><con:settings/><con:config method="PUT" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/ServiceRequest/${#TestSuite#serviceRequest_id}</con:endpoint><con:request>{
+  "resourceType": "ServiceRequest",
+  "id": "${#TestSuite#serviceRequest_id}",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/servicerequest-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58410-2",
+        "display": "Complete blood count (hemogram) panel - PUT"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "requester": {
+    "reference": "Practitioner/${#TestSuite#practitioner_id}"
+  },
+  "performer": [
+    {
+      "reference": "Organization/${#TestSuite#organization_id}"
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Liječnik ${#TestSuite#practitioner_name_given} ${#TestSuite#practitioner_name_family} iz ustanove ${#TestSuite#organization_name} zatražio je laboratorijsku pretragu za pacijenta ${#TestSuite#patient_name_given} ${#TestSuite#patient_name_family}.&lt;/div>"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="0832509a-3419-49a0-93b0-0a453ad54fc5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ServiceRequest - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="07d6d4f2-85d2-45a3-8d3f-110a290638d2"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/ServiceRequest/${#TestSuite#serviceRequest_id}</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="7be54b91-ac65-48c7-9757-f31ad526938a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ServiceRequest - $validate" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="dc46fff2-eb1f-45b6-b97b-a3e52d087fd0"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/ServiceRequest/$validate</con:endpoint><con:request>{
+  "resourceType": "ServiceRequest",
+  "status": "active",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/servicerequest-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58410-2",
+        "display": "Complete blood count (hemogram) panel"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "requester": {
+    "reference": "Practitioner/${#TestSuite#practitioner_id}"
+  },
+  "performer": [
+    {
+      "reference": "Organization/${#TestSuite#organization_id}"
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Liječnik ${#TestSuite#practitioner_name_given} ${#TestSuite#practitioner_name_family} iz ustanove ${#TestSuite#organization_name} zatražio je laboratorijsku pretragu za pacijenta ${#TestSuite#patient_name_given} ${#TestSuite#patient_name_family}.&lt;/div>"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>patient_id</con:name><con:value>62</con:value></con:property><con:property><con:name>practitioner_id</con:name><con:value>63</con:value></con:property><con:property><con:name>organization_id</con:name><con:value>64</con:value></con:property><con:property><con:name>encounter_id</con:name><con:value>36</con:value></con:property><con:property><con:name>patient_name_given</con:name><con:value>Petra</con:value></con:property><con:property><con:name>patient_name_family</con:name><con:value>Kiš</con:value></con:property><con:property><con:name>practitioner_name_given</con:name><con:value>Anna</con:value></con:property><con:property><con:name>practitioner_name_family</con:name><con:value>Szendrei</con:value></con:property><con:property><con:name>organization_name</con:name><con:value>Klinički Bolnički Centar Osijek</con:value></con:property><con:property><con:name>serviceRequest_id</con:name><con:value>65</con:value></con:property></con:properties></con:testSuite><con:testSuite id="732d0c37-e384-4dd7-80ff-c200646955cb" name="MedicationRequest"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b04d8418-f5ee-4daa-8162-a8dd385604f9" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Patient - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="d18d656c-762d-4a52-bd9a-c273a81e6e77"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Patient/</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="d496e43f-b5bd-40b3-ba88-9466c0a2e1cf"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>patient_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>patient_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>patient_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>patient_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>patient_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="58d22dcd-0fe5-4007-8371-ed43de7d4d98" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Practitioner - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="11de473d-7971-4cb3-8da1-3e0b50b9bef2"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Practitioner/</con:endpoint><con:request>{
+  "resourceType": "Practitioner",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/practitioners",
+	  "value": "anna-001"
+	}
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Szendrei",
+      "given": ["Anna"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-04-06"
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="b414c505-4dad-48a9-aa9f-682fcead6589"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>practitioner_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>practitioner_name_family</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].family</con:sourcePath><con:targetType>practitioner_name_family</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" disabled="false" entitize="false" ignoreEmpty="false" transferChildNodes="false" transferToAll="false" useXQuery="false"><con:name>practitioner_name_given</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name[0].given[0]</con:sourcePath><con:targetType>practitioner_name_given</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:targetPath xsi:nil="true"/><con:type>JSONPATH</con:type><con:targetTransferType>XPATH</con:targetTransferType><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="b7b81752-a07e-414c-a54c-49c4eb51891f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Organization - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="35a8b45c-4c30-4579-85da-bc7e8a8314a6"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="Accept-Charset" value="UTF-8" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/Organization/</con:endpoint><con:request>{
+  "resourceType": "Organization",
+  "identifier": [
+    {
+	  "system": "http://moj-sustav.hr/Organization",
+	  "value": "kbc-osijek"
+	}
+  ],
+  "active": true,
+  "name": "Klinički Bolnički Centar Osijek",
+  "alias": ["KBC Osijek"],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385-31-511-511",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "info@kbc-osijek.hr",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "type": "physical",
+      "text": "J. Huttlera 4, 31000 Osijek, Hrvatska",
+      "line": ["J. Huttlera 4"],
+      "city": "Osijek",
+      "postalCode": "31000",
+      "country": "HR"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="d9589396-e717-4429-8a6d-6961094dceca"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>organization_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>organization_name</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.name</con:sourcePath><con:targetType>organization_name</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ede49b43-e09a-4870-aa41-70baf428575c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="MedicationRequest - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="dec69c3b-18fb-46eb-945f-42405c965fc4"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/MedicationRequest/</con:endpoint><con:request>{
+  "resourceType": "MedicationRequest",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "860975",
+        "display": "Paracetamol 500mg tablet"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "requester": {
+    "reference": "Practitioner/${#TestSuite#practitioner_id}"
+  },
+  "dosageInstruction": [
+    {
+      "text": "Uzimati 1 tabletu svakih 8 sati po potrebi za bol.",
+      "timing": {
+        "repeat": {
+          "frequency": 3,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "26643006",
+            "display": "Oral route"
+          }
+        ]
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 500,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Liječnik ${#TestSuite#practitioner_name_given} ${#TestSuite#practitioner_name_family} propisao je lijek pacijentu ${#TestSuite#patient_name_given} ${#TestSuite#patient_name_family} iz ustanove ${#TestSuite#organization_name}.&lt;/div>"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="37716d5a-6979-4300-a7ee-890ee53df68b"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>medicationRequest_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>medicationRequest_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="3caf2127-57b8-4c9a-810d-a05932084f1b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="MedicationRequest - GET" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="7b5f6d91-f8ee-4a85-a299-544f62ba7434"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/MedicationRequest/${#TestSuite#medicationRequest_id}</con:endpoint><con:request>{
+  "resourceType": "Patient",
+  "id": "123456789",
+  "name": [
+    {
+      "use": "official",
+      "family": "Kiš",
+      "given": ["Petra"]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-12",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "+385958332873",
+      "use": "mobile"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="173bce32-3495-4dd5-9199-5c3ff601a889" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="MedicationRequest - PUT" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="bd825faa-e698-47f3-8bc9-e40c956a7ee8"><con:settings/><con:config method="PUT" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/MedicationRequest/${#TestSuite#medicationRequest_id}</con:endpoint><con:request>{
+  "resourceType": "MedicationRequest",
+  "id": "${#TestSuite#medicationRequest_id}",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "860975",
+        "display": "Paracetamol 500mg tablet"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "requester": {
+    "reference": "Practitioner/${#TestSuite#practitioner_id}"
+  },
+  "dosageInstruction": [
+    {
+      "text": "Uzimati 2 tablete svakih 8 sati po potrebi za bol.",
+      "timing": {
+        "repeat": {
+          "frequency": 3,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "26643006",
+            "display": "Oral route"
+          }
+        ]
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 500,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Liječnik ${#TestSuite#practitioner_name_given} ${#TestSuite#practitioner_name_family} propisao je lijek pacijentu ${#TestSuite#patient_name_given} ${#TestSuite#patient_name_family} iz ustanove ${#TestSuite#organization_name}.&lt;/div>"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="11973851-8a7b-4139-bb09-6481f1389d0f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="MedicationRequest - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="b5d5d873-7bd7-4b11-8a54-deca84399b1b"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/MedicationRequest/${#TestSuite#medicationRequest_id}</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="67f49b0d-c290-4380-ac4a-caa63a8b83fb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="MedicationRequest - $validate" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="8dc893de-16e8-4095-bff2-6f5e38e4d449"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="48948ab8-fdb5-4bb5-9b2d-5e8eef652f6a" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/MedicationRequest/$validate</con:endpoint><con:request>{
+  "resourceType": "MedicationRequest",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "860975",
+        "display": "Paracetamol 500mg tablet"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/${#TestSuite#patient_id}"
+  },
+  "requester": {
+    "reference": "Practitioner/${#TestSuite#practitioner_id}"
+  },
+  "dosageInstruction": [
+    {
+      "text": "Uzimati 1 tabletu svakih 8 sati po potrebi za bol.",
+      "timing": {
+        "repeat": {
+          "frequency": 3,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "26643006",
+            "display": "Oral route"
+          }
+        ]
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity": {
+            "value": 500,
+            "unit": "mg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mg"
+          }
+        }
+      ]
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\">Liječnik ${#TestSuite#practitioner_name_given} ${#TestSuite#practitioner_name_family} propisao je lijek pacijentu ${#TestSuite#patient_name_given} ${#TestSuite#patient_name_family} iz ustanove ${#TestSuite#organization_name}.&lt;/div>"
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>patient_id</con:name><con:value>66</con:value></con:property><con:property><con:name>practitioner_id</con:name><con:value>67</con:value></con:property><con:property><con:name>organization_id</con:name><con:value>68</con:value></con:property><con:property><con:name>encounter_id</con:name><con:value>36</con:value></con:property><con:property><con:name>patient_name_given</con:name><con:value>Petra</con:value></con:property><con:property><con:name>patient_name_family</con:name><con:value>Kiš</con:value></con:property><con:property><con:name>practitioner_name_given</con:name><con:value>Anna</con:value></con:property><con:property><con:name>practitioner_name_family</con:name><con:value>Szendrei</con:value></con:property><con:property><con:name>organization_name</con:name><con:value>Klinički Bolnički Centar Osijek</con:value></con:property><con:property><con:name>serviceRequest_id</con:name><con:value>65</con:value></con:property><con:property><con:name>medicationRequest_id</con:name><con:value>69</con:value></con:property></con:properties></con:testSuite><con:testSuite id="94978f50-ecb0-4f5c-9603-d873773460f4" name="CodeSystem"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="c0834e0a-b6b6-41ba-817b-0b70f22a92c3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CodeSystem - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="951f9ff7-2f66-4652-8836-4b074cc32287"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="4d82135a-a3ae-459e-aa7b-69eeffe4f17d" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/CodeSystem</con:endpoint><con:request>{
+  "resourceType": "CodeSystem",
+  "url": "http://example.org/fhir/CodeSystem/tipovi-pregleda",
+  "identifier": {
+    "system": "http://example.org/fhir/CodeSystem/identifiers",
+    "value": "tipovi-pregleda"
+  },
+  "version": "1.0",
+  "name": "TipoviPregleda",
+  "status": "active",
+  "content": "complete",
+  "concept": [
+    {
+      "code": "oftalmoloski",
+      "display": "Oftalmološki pregled"
+    },
+    {
+      "code": "neuroloski",
+      "display": "Neuroloski pregled"
+    },
+    {
+      "code": "pedijatrijski",
+      "display": "Pedijatrijski pregled"
+    },
+    {
+      "code": "stomatoloski",
+      "display": "Stomatološki pregled"
+    }
+  ]
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="6c63e697-f68e-4f68-bac6-2b2c4e300216"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>codeSystem_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>codeSystem_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="a7cd0b3f-0e5f-4d61-8b29-ff7e16146e7b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CodeSystem - $lookup" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="f67c71d9-5a0b-4566-af1d-9e8dcf43b6e7"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="fce0fc63-ee48-48be-9d2a-f2f8ff6d1938" name="HTTP Request" postQueryString="false" mediaType="application/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/CodeSystem/$lookup?system=http://example.org/fhir/CodeSystem/tipovi-pregleda&amp;code=oftalmoloski</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ba3c0a9d-5aa0-4582-b1e5-14bdabecaf35" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CodeSystem - $validate-code" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="d5854ea6-74fd-46b2-bce7-657336d6e3c0"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="4c3ae971-004c-4cff-b3f8-77120c0e3c72" name="HTTP Request" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/CodeSystem/${#TestSuite#codeSystem_id}/$validate-code?code=pedijatrijski&amp;display=Pedijatrijski pregled</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="22224a50-51ef-42b0-8d7b-45d719fa61d5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CodeSystem - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="ac445e27-4e44-468e-8a78-0ded1fef6097"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="4d82135a-a3ae-459e-aa7b-69eeffe4f17d" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/CodeSystem/${#TestSuite#codeSystem_id}</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>codeSystem_id</con:name><con:value>73</con:value></con:property></con:properties></con:testSuite><con:testSuite id="03a067e9-e66a-41bf-b163-c9eee47e154d" name="ValueSet"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="21d97064-edb0-47ce-ad43-b5fd2fbe28ae" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ValueSet - POST" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="cc6b4a96-5cfb-4dbd-983c-3b8684d5aa71"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="4d82135a-a3ae-459e-aa7b-69eeffe4f17d" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/ValueSet</con:endpoint><con:request>{
+  "resourceType": "ValueSet",
+  "url": "http://example.org/fhir/ValueSet/tipovi-pregleda",
+  "version": "1.0",
+  "name": "TipoviPregledaValueSet",
+  "status": "active",
+  "compose": {
+    "include": [
+      {
+        "system": "http://example.org/fhir/CodeSystem/tipovi-pregleda",
+        "concept": [
+          {
+            "code": "oftalmoloski"
+          },
+          {
+            "code": "neuroloski"
+          }
+        ]
+      }
+    ]
+  }
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="f30177b1-39d3-495f-bed8-d5b259465c08"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>valueSet_id</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>HTTP Request</con:sourceStep><con:sourcePath>$.id</con:sourcePath><con:targetType>valueSet_id</con:targetType><con:targetStep>#TestSuite#</con:targetStep><con:type>JSONPATH</con:type><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="13374dab-409d-47e8-bee2-b0f2fdeaf2b3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ValueSet - $validate-code" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="ca415844-f4e3-43f9-b8fb-006f26e3759f"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="4c3ae971-004c-4cff-b3f8-77120c0e3c72" name="HTTP Request" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/ValueSet/${#TestSuite#valueSet_id}/$validate-code?system=http://example.org/fhir/CodeSystem/tipovi-pregleda&amp;code=neuroloski</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="75c8ce8b-9905-477a-97c6-991326e72c9c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ValueSet - $expand" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="38781050-e114-4f51-8d66-e8970c092cd7"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="fce0fc63-ee48-48be-9d2a-f2f8ff6d1938" name="HTTP Request" postQueryString="false" mediaType="application/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/ValueSet/${#TestSuite#valueSet_id}/$expand</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="47439f0e-cabd-414e-a0d7-0c5d11109910" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ValueSet - DELETE" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="HTTP Request" id="852a855b-153d-4eca-a59a-abef6df10a17"><con:settings/><con:config method="DELETE" xsi:type="con:HttpRequest" id="4d82135a-a3ae-459e-aa7b-69eeffe4f17d" name="HTTP Request" postQueryString="false" mediaType="application/fhir+json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080/fhir/ValueSet/${#TestSuite#valueSet_id}</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>valueSet_id</con:name><con:value>74</con:value></con:property></con:properties></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
